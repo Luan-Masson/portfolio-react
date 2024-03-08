@@ -6,8 +6,8 @@ import { Button } from "primereact/button";
 function handleThemeChange(e) {
   const linkStyle = document.getElementsByTagName('link')[1];
   !linkStyle.id ? linkStyle.id = 'style' : null;
-  e.matches ? linkStyle.href.replace('light', 'dark') : 
-  linkStyle.href.replace('dark', 'light');
+  e.matches ? linkStyle.href = linkStyle.href.replace('light', 'dark') : 
+  linkStyle.href = linkStyle.href.replace('dark', 'light');
 }
 const prefersColorScheme = window.matchMedia("(prefers-color-scheme: dark)");
 prefersColorScheme.addEventListener("change", handleThemeChange);
