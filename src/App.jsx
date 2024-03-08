@@ -8,7 +8,6 @@ function handleThemeChange(e) {
   !linkStyle.id ? linkStyle.id = 'style' : null;
   e.matches ? linkStyle.href.replace('light', 'dark') : 
   linkStyle.href.replace('dark', 'light');
-  
 }
 const prefersColorScheme = window.matchMedia("(prefers-color-scheme: dark)");
 prefersColorScheme.addEventListener("change", handleThemeChange);
