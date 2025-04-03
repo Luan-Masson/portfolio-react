@@ -1,0 +1,39 @@
+/*
+    Criado especificamente para passar por cima de alguns estilos de forma global e
+    inserir o tailwindcss no projeto.
+*/
+
+/* tailwindcss configuration */
+@layer tailwind-base, primereact, tailwind-utilities;
+
+/* IMPORTANT: In "styled" mode you must add the PrimeReact Theme here. Do NOT include in "unstyled" mode */
+/* @import 'primereact/resources/themes/lara-light-blue/theme.css' layer(primereact); */
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+
+/* global changes */
+
+/* 
+    Retira efeito feio que fica em volta do botão quando clica nele.
+    Caso queria ver com efeito padrão, basta usar: 
+    box-shadow: box-shadow: 0 0 0 0.1rem #cdd3db; em temas claros.
+    nos temas escuros o botão fica parecendo ativo.
+ */
+.p-button.p-button-secondary:not(:disabled):focus,
+.p-buttonset.p-button-secondary > .p-button:not(:disabled):focus,
+.p-splitbutton.p-button-secondary > .p-button:not(:disabled):focus,
+.p-fileupload-choose.p-button-secondary:not(:disabled):focus{
+  box-shadow: 0px 6px 1px -2px #0033ff33, 0px 2px 2px 0px #0033ff33, 0px 1px 5px 0px #0033ff33;
+}
+
+.p-button.p-button-raised{
+  box-shadow: 0px 6px 1px -2px #0033ff33, 0px 2px 2px 0px #0033ff33, 0px 1px 5px 0px #0033ff33;
+}
