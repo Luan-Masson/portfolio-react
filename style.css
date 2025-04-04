@@ -31,9 +31,9 @@
 .p-buttonset.p-button-secondary > .p-button:not(:disabled):focus,
 .p-splitbutton.p-button-secondary > .p-button:not(:disabled):focus,
 .p-fileupload-choose.p-button-secondary:not(:disabled):focus{
-  box-shadow: 0px 6px 1px -2px #0033ff33, 0px 2px 2px 0px #0033ff33, 0px 1px 5px 0px #0033ff33;
+  box-shadow: 0px 6px 1px -2px #2563eb33, 0px 2px 2px 0px #2563eb33, 0px 1px 5px 0px #2563eb33;
 }
 
 .p-button.p-button-raised{
-  box-shadow: 0px 6px 1px -2px #0033ff33, 0px 2px 2px 0px #0033ff33, 0px 1px 5px 0px #0033ff33;
+  box-shadow: 0px 6px 1px -2px #2563eb33, 0px 2px 2px 0px #2563eb33, 0px 1px 5px 0px #2563eb33;
 }
