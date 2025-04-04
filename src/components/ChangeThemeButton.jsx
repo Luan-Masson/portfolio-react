@@ -28,7 +28,7 @@ export default function ChangeThemeButton() {
     return (
         <Button
             icon={currentTheme === "viva-dark" ? "pi pi-sun" : "pi pi-moon"}
-            className="p-button-outlined"
+            className="p-button-outlined shadow-lg shadow-blue-500"
             severity="secondary"
             rounded
             text
