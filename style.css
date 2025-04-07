@@ -5,15 +5,22 @@
 
 /* global changes */
 
-/* 
-    Retira efeito feio que fica em volta do botão quando clica nele.
-    Caso queria ver com efeito padrão, basta usar: 
-    box-shadow: box-shadow: 0 0 0 0.1rem #cdd3db; em temas claros.
-    nos temas escuros o botão fica parecendo ativo.
- */
-/* .p-button.p-button-secondary:not(:disabled):focus,
-.p-buttonset.p-button-secondary > .p-button:not(:disabled):focus,
-.p-splitbutton.p-button-secondary > .p-button:not(:disabled):focus,
-.p-fileupload-choose.p-button-secondary:not(:disabled):focus{
-  box-shadow: 0px 6px 1px -2px #2563eb33, 0px 2px 2px 0px #2563eb33, 0px 1px 5px 0px #2563eb33;
-} */
+body{
+  margin: 0;
+}
+
+.fade-in-out {
+  animation: fade-in-out 2s forwards;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -5,9 +5,9 @@ import { PrimeReactProvider } from "primereact/api";
 import 'primeicons/primeicons.css';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  // </React.StrictMode>
     <PrimeReactProvider>
       <App />
     </PrimeReactProvider>
-  </React.StrictMode>
 );

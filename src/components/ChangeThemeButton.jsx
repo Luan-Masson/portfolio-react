@@ -1,13 +1,16 @@
-import { PrimeReactContext } from "primereact/api"; // Certifique-se de importar corretamente
-import { Button } from "primereact/button"; // Certifique-se de importar corretamente
+import { PrimeReactContext } from "primereact/api";
+import { Button } from "primereact/button";
 import { useContext, useEffect, useState } from "react";
 
 export default function ChangeThemeButton() {
     const temaEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches
     const { changeTheme } = useContext(PrimeReactContext);
     const [currentTheme, setTheme] = useState(() => {
-        return sessionStorage.getItem("theme") || temaEscuro ? "viva-dark" : "viva-light";
+        const savedTheme = sessionStorage.getItem("theme");
+        return savedTheme ? savedTheme : (temaEscuro ? "viva-dark" : "viva-light");
     });
+
+
     
     useEffect(() => {
         sessionStorage.setItem("theme", currentTheme);
@@ -28,7 +31,7 @@ export default function ChangeThemeButton() {
     return (
         <Button
             icon={currentTheme === "viva-dark" ? "pi pi-sun" : "pi pi-moon"}
-            className="p-button-outlined shadow-lg shadow-blue-500"
+            className="p-button-outlined shadow-lg shadow-blue-500 mr-6 bg-(--primary-color-text)"
             severity="secondary"
             rounded
             text
