@@ -1,16 +1,16 @@
 import { PrimeReactContext } from "primereact/api";
 import { Button } from "primereact/button";
 import { useContext, useEffect, useState } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function ChangeThemeButton() {
+    const { data } = useLanguage();    
     const temaEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches
     const { changeTheme } = useContext(PrimeReactContext);
     const [currentTheme, setTheme] = useState(() => {
         const savedTheme = sessionStorage.getItem("theme");
         return savedTheme ? savedTheme : (temaEscuro ? "viva-dark" : "viva-light");
     });
-
-
     
     useEffect(() => {
         sessionStorage.setItem("theme", currentTheme);
@@ -21,7 +21,7 @@ export default function ChangeThemeButton() {
         const link = document.getElementById("theme").href.replace("viva-light", "viva-dark");
         document.getElementById("theme").setAttribute("href", link)
     }
-    
+
     const changeThemeFunc = () => {
         const newTheme = currentTheme === "viva-light" ? "viva-dark" : "viva-light";
         changeTheme(currentTheme, newTheme, "theme");
@@ -37,7 +37,7 @@ export default function ChangeThemeButton() {
             text
             raised
             onClick={changeThemeFunc}
-            tooltip={currentTheme === "viva-dark" ? "Modo Claro" : "Modo Escuro"} tooltipOptions={{ position: 'left' }}
+            tooltip={currentTheme === "viva-dark" ? data?.mode?.light : data?.mode?.dark} tooltipOptions={{ position: 'left' }}
         />
     );
 }

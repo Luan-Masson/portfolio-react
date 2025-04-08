@@ -7,10 +7,11 @@ import ChangeThemeButton from './components/ChangeThemeButton';
 import MainHeader from './components/MainHeader';
 import WaveDivider from './components/WaveDivider';
 import FirstImpression from './components/FirstImpression';
+import { useLanguage } from './contexts/LanguageContext';
 
 function App() {
   const toast = useRef(null);
-  const selectedLanguage = localStorage.getItem("selectedLanguage") || "pt";
+  const { actualLang } = useLanguage();
   const { width } = useWindowSize();
   const items = [
     {
@@ -41,9 +42,9 @@ function App() {
         navigator.clipboard.writeText("luan0masson@gmail.com");
         toast.current.show({
           severity: "info",
-          summary: selectedLanguage === "pt" ? "Copiado" : "Copied",
+          summary: actualLang === "pt-br" ? "Copiado" : "Copied",
           detail:
-            selectedLanguage === "pt"
+            actualLang === "pt-br"
               ? "E-mail copiado para a área de transferência"
               : "Email copied to clipboard",
           life: 3000,
@@ -54,7 +55,7 @@ function App() {
 
   return (
     <>
-      <header className="flex w-full justify-between fixed m-3 top-3 z-10">
+      <header className="flex w-full justify-between fixed m-3 top-3 z-30">
         <div className='w-[3rem] h-[3rem]'>
           <Toast ref={toast} position="top-right" />
           <Tooltip target=".mySpeedDial .p-speeddial-action" />

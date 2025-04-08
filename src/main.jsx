@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import { PrimeReactProvider } from "primereact/api";
 import 'primeicons/primeicons.css';
+import { PrimeReactProvider } from "primereact/api";
+import { LanguageProvider } from "./contexts/LanguageContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  // </React.StrictMode>
+  <React.StrictMode>
     <PrimeReactProvider>
-      <App />
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
     </PrimeReactProvider>
+  </React.StrictMode>
 );
