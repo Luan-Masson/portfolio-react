@@ -10,6 +10,7 @@ import WaveDivider from './components/WaveDivider';
 import FirstImpression from './components/FirstImpression';
 import AboutMe from './components/AboutMe';
 import Skills from './components/Skills';
+import Projects from './components/Projects';
 
 function App() {
   const toast = useRef(null);
@@ -94,6 +95,7 @@ function App() {
         <>
           <AboutMe />
           <Skills />
+          <Projects />
         </>
         : null}
     </>
