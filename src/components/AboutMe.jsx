@@ -11,7 +11,7 @@ export default function AboutMe() {
                 <div
                     className="flex flex-col md:flex-row fade-in w-full h-full items-center justify-center gap-8"
                 >
-                    <AnimateOnScroll className="flex flex-col gap-1 w-8/12 md:w-104 items-center md:items-start">
+                    <AnimateOnScroll className="flex flex-col gap-1 w-8/12 md:w-104 justify-center items-center md:items-start" animationClass="fade-in-up flex flex-col justify-center items-center">
                         <h1 className="text-xl m-0 md:text-3xl text-center md:text-justify">{data?.about?.header}</h1>
                         <div className="w-48 md:w-96">
                             <p className="text-sm md:text-base text-justify indent-4">
