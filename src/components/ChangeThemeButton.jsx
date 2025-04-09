@@ -1,43 +1,39 @@
-import { PrimeReactContext } from "primereact/api";
 import { Button } from "primereact/button";
-import { useContext, useEffect, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useTheme } from "../contexts/ThemeContext";
+import { useEffect } from 'react'
 
 export default function ChangeThemeButton() {
-    const { data } = useLanguage();    
-    const temaEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const { changeTheme } = useContext(PrimeReactContext);
-    const [currentTheme, setTheme] = useState(() => {
-        const savedTheme = sessionStorage.getItem("theme");
-        return savedTheme ? savedTheme : (temaEscuro ? "viva-dark" : "viva-light");
-    });
-    
+    const { data } = useLanguage();
+    const { theme, setTheme } = useTheme();
+    const themeLink = document.getElementById("theme");
+
     useEffect(() => {
-        sessionStorage.setItem("theme", currentTheme);
-    }, [currentTheme]);
+        if(theme === "viva-dark"){
+            const link = themeLink.href.replace("viva-light", "viva-dark");
+            themeLink.setAttribute("href", link)
+        }
+    }, [theme])
 
-    //verifica se o tema salvo foi claro ou escuro e troca o tema do link, evitando o erro de tema escuro ao abrir a página pela primeira vez
-    if (currentTheme === "viva-dark") {
-        const link = document.getElementById("theme").href.replace("viva-light", "viva-dark");
-        document.getElementById("theme").setAttribute("href", link)
-    }
-
-    const changeThemeFunc = () => {
-        const newTheme = currentTheme === "viva-light" ? "viva-dark" : "viva-light";
-        changeTheme(currentTheme, newTheme, "theme");
+    const toggleTheme = () => {
+        const newTheme = theme === "viva-light" ? "viva-dark" : "viva-light";
+        if (themeLink) {
+            const updatedHref = themeLink.href.replace(theme, newTheme);
+            themeLink.setAttribute("href", updatedHref);
+        }
         setTheme(newTheme);
     };
 
     return (
         <Button
-            icon={currentTheme === "viva-dark" ? "pi pi-sun" : "pi pi-moon"}
+            icon={theme === "viva-dark" ? "pi pi-sun" : "pi pi-moon"}
             className="p-button-outlined shadow-lg shadow-blue-500 mr-6 bg-(--primary-color-text)"
             severity="secondary"
             rounded
             text
             raised
-            onClick={changeThemeFunc}
-            tooltip={currentTheme === "viva-dark" ? data?.mode?.light : data?.mode?.dark} tooltipOptions={{ position: 'left' }}
+            onClick={toggleTheme}
+            tooltip={theme === "viva-dark" ? data?.mode?.light : data?.mode?.dark} tooltipOptions={{ position: 'left' }}
         />
     );
 }
