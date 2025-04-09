@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-function FirstImpression() {
+export default function FirstImpression() {
     const knowledges = ["Front", "Back", "Dev"];
     const [showText, setShowText] = useState('Front');
     const [headerKey, setHeaderKey] = useState(0);
@@ -36,5 +36,3 @@ function FirstImpression() {
         </>
     );
 }
-
-export default FirstImpression;

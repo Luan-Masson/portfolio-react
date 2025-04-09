@@ -1,18 +1,21 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SpeedDial } from 'primereact/speeddial';
 import { Tooltip } from 'primereact/tooltip';
 import { Toast } from 'primereact/toast';
 import { useWindowSize } from './hooks/WindowSizeHook';
+import { useLanguage } from './contexts/LanguageContext';
 import ChangeThemeButton from './components/ChangeThemeButton';
 import MainHeader from './components/MainHeader';
 import WaveDivider from './components/WaveDivider';
 import FirstImpression from './components/FirstImpression';
-import { useLanguage } from './contexts/LanguageContext';
+import AboutMe from './components/AboutMe';
+import Skills from './components/Skills';
 
 function App() {
   const toast = useRef(null);
   const { actualLang } = useLanguage();
   const { width } = useWindowSize();
+  const [imagesReady, setImagesReady] = useState(false);
   const items = [
     {
       label: "Linkedin",
@@ -53,6 +56,16 @@ function App() {
     },
   ];
 
+  useEffect(() => {
+    setTimeout(() => {
+      setImagesReady(true);
+    }, 5000);
+  }, []);
+
+  const handleImagesLoaded = () => {
+    setImagesReady(true);
+  };
+
   return (
     <>
       <header className="flex w-full justify-between fixed m-3 top-3 z-30">
@@ -74,7 +87,15 @@ function App() {
       </header>
       {width < 768 ? <MainHeader className="fixed bottom-3 left-[50%] translate-x-[-50%] z-100" /> : null}
       <FirstImpression />
-      <WaveDivider />
+      <WaveDivider onImagesLoaded={handleImagesLoaded} />
+      {/* Deixarei todo o resto aqui dentro para o usuario só conseguir ver caso as waves estiverem carregadas, proporcionando uma melhor experiencia.
+      Mas também foi inserida uma lógica que em caso de não carregamento depois de 5s o usuário tbm conseguira ver. */}
+      {imagesReady ?
+        <>
+          <AboutMe />
+          <Skills />
+        </>
+        : null}
     </>
   );
 }
