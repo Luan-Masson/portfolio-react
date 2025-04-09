@@ -9,6 +9,10 @@ body{
   margin: 0;
 }
 
+h1{
+  margin: 0 !important;
+}
+
 .fade-in-out {
   animation: fade-in-out 2s forwards;
 }
